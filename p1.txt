@@ -1,0 +1,153 @@
+	TÍTULO: Práctica 1 de Algoritmos  |
+__________________________________________|________________________________
+	AUTOR:Iván Álvarez Fernandez        LOGIN 1:ivan.alvarez.fernandez |
+	AUTOR:Marcos Gómez Tejón	    LOGIN 2:m.tejon 		   |
+___________________________________________________________________________|
+	GRUPO: 1.4  	 |
+-------------------------|
+        FECHA: 23/09/2022|
+________________________/
+_____________________________________
+	CARACTERÍSTICAS DEL EQUIPO: /
+-----------------------------------/
+
+    Lenovo Lenovo IdeaPad S145-15IIL
+    Memoria RAM: 8,0 GiB
+    Procesador: Intel® Core™ i5-1035G1 CPU @ 1.00GHz × 8
+    Sistema operativo: Ubuntu 22.04.1 LTS
+    Arquitectura: 64 bits
+______________________________________    
+	INTRODUCCIÓN:                /
+------------------------------------/
+
+    La práctica consiste en analizar 3 formas diferentes de calcular números de la sucesión de FIbonacci.
+
+    La succesión de Fibonacci 'fib(n)' es una sucesión numérica que se define como:
+	
+	n=0--->0
+	n=1--->1
+	n>=2-->fib(n-1)+fib(n-2)
+	
+    Los primeros números serían 0, 1, 1, 2, 3, 5, 8...
+    
+    A continuación mostramos una descripción/informe de la práctica. En primer lugar mostramos un test de los tres algoritmos en el que calculamos las primeras 14 iteraciones. Después mostramos 3 		 
+tablas (1 por cada algoritmo) en el que se reflejan los tiempos de ejecución(en microsegundos) y las cotas.
+______________________________________    
+	DESCRIPCIÓN DE LA PRÁCTICA:  /
+------------------------------------/
+
+RESULTADOS DEL TEST DE LOS TRES ALGORITMOS PARA LAS PRIMERAS 14 ITERACIONES:
+	
+	FIB1	FIB2	FIB3
+	n=1	1	1	1
+
+	n=2	1	1	1
+	
+	n=3	2	2	2
+
+	n=4	3	3	3
+
+	n=5	5	5	5
+
+	n=6	8	8	8
+
+	n=7	13	13	13
+
+	n=8	21	21	21
+
+	n=9	34	34	34
+
+	n=10	55	55	55
+
+	n=11	89	89	89
+
+	n=12	144	144	144
+
+	n=13	233	233	233
+
+	n=14	377	377	377
+
+
+     Los valores son correctos, por lo tanto, los algoritmos funcionan correctamente.
+
+ *-__________________________________________________________________________-*
+ .-									     -.
+ 
+ (*)---> El asterisco refleja que el tiempo de ejecución es menor que 500 microsegundos, por lo tanto repetimos el bucle K veces (dependiendo de la exatitud requerida).
+ 
+	Para fib1:
+      -------------
+     Cota subestimada:O(1,1^n)
+     Cota ajustada:O(Φ^n) siendo Φ (1+√5)/2
+     Cota sobreestimada:O(2^n) 
+	 	 
+              n          t(n)        t(n)           t(n)            t(n)
+           			   -------    ----------------    ------- 
+                                    1.1^n     ((1+sqrt(5)/2))^n     2^n
+	                  	   
+(*)           2        0.02168    0.017917355    0.008281023    0.005420000
+(*)           4        0.03401    0.023229288    0.004961992    0.002125625
+(*)           8        0.16460    0.076787115    0.003503714    0.000642969
+(*)          16        7.44906    1.621132490    0.003375198    0.000113664
+             32    16425.00000  777.928089233    0.003372103    0.000003824
+      
+             
+En caso de (*) usamos K = 100000, siendo K el numero de veces que se ejecuta el algoritmo.
+          
+  	OBSERVACIONES: La cota ajustada tiende a 0.00337 microsegundos aproximadamente. La complejidad computacional es ((1+sqrt(5)/2))^n. El tiempo de ejecución del algoritmo aumenta muchísimo con cada aumento del valor de n al tener que calcular todo de forma recursiva. La cota subestimada crece cuando n tiene a infinito. La cota sobreestimada decrece cuando n tiene a infinito. 
+  
+ *-__________________________________________________________________________-*
+ .-									     -.
+
+	Para fib2:
+      -------------
+     Cota subestimada:O(n^0.8) 
+     Cota ajustada:O(n)
+     Cota sobreestimada:O(nlog n )
+     
+	 	 
+              n         t(n)         t(n)            t(n)          t(n)
+           		           ----------      --------     -----------
+                                   (n^0.8)             n        (n*log(n))
+                                 
+(*)        1000        2.17100    0.008642907    0.002171000    0.000314284
+(*)       10000       22.33900    0.014094956    0.002233900    0.000242543
+(*)      100000      215.04400    0.021504400    0.002150440    0.000186785
+        1000000     2181.00000    0.034566521    0.002181000    0.000157866
+       10000000    21095.00000    0.052988244    0.002109500    0.000130878
+
+En caso de (*) usamos K = 1000, siendo K el numero de veces que se ejecuta el algoritmo.
+
+  	OBSERVACIONES: La cota ajusta tiende a 0.0021 microsegundos aproximadamente. La complejidad computacional es n. El tiempo de ejecución del algoritmo aumenta de forma constante
+al aumentar n. La cota subestimada crece poco a poco cuando n tiende a infinito. La cota sobreestimada decrece poco a poco cuando n tiende a infinito.
+
+ *-__________________________________________________________________________-*
+ .-									     -.
+	Para fib3:
+     --------------
+     Cota subestimada:O(√(log n))
+     Cota ajustada:O(log n)
+     Cota sobreestimada:O(n^0.5)
+     
+	 	 
+              n         t(n)         t(n)           t(n)            t(n)
+           		        --------------    --------         -------
+                                  sqrt(log(n))     log(n)           n^0.5
+                                 
+(*)        1000        0.05225    0.019880066    0.007563962    0.001652290
+(*)       10000        0.06086    0.020053681    0.006607791    0.000608600
+(*)      100000        0.08106    0.023889868    0.007040782    0.000256334
+(*)     1000000        0.09451    0.025426951    0.006840862    0.000094510
+(*)    10000000        0.10492    0.026133731    0.006509454    0.000033179
+
+
+En caso de (*) usamos K = 10000, siendo K el numero de veces que se ejecuta el algoritmo.
+
+  	OBSERVACIONES: La cota ajusta tiende a un valor entre 0.0060 y 0.0070 microsegundos aproximadamente. La complejidad computacional es log(n). El tiempo de ejecución del algoritmo prácticamente no aumenta al ir aumentando el valor de n. La cota subestimada crece poco a poco cuando n tiende a infinito. La cota sobrestimada decrece cuando n tiende a infinito.
+  
+ *-__________________________________________________________________________-*
+ .-									     -.
+ 
+ 
+ CONCLUSIÓN: El algoritmo menos eficiente es el recursivo porque los tiempos de ejecución son muy grandes con valores de n bastante pequeños, aunque es el más sencillo de entender y programar. Sin embargo, no podría llegar a ejecutar el código para valores que no sean muy pequeños de n en un tiempo razonable. En el algoritmo (fib2) los tiempos de ejecución crecen de forma constante. El último algoritmo (fib3) es el más eficiente, con unos tiempos de ejecución muy bajos.
+
