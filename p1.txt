@@ -20,7 +20,7 @@ ______________________________________
 	INTRODUCCIÓN:                /
 ------------------------------------/
 
-    La práctica consiste en analizar 3 formas diferentes de calcular números de la sucesión de FIbonacci.
+    La práctica consiste en analizar 3 formas diferentes de calcular números de la sucesión de Fibonacci.
 
     La succesión de Fibonacci 'fib(n)' es una sucesión numérica que se define como:
 	
